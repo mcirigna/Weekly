@@ -10,7 +10,7 @@ import UIKit
 
 class CollectionView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    let headerView = HeaderView()
+    let labelView = LabelView()
     
     private let cellId = "cellId"
     let collectionView: UICollectionView
@@ -41,17 +41,17 @@ extension CollectionView {
     }
     
     func arrangeView() {
-        addSubview(headerView)
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        headerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        headerView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        headerView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.16).isActive = true
-        headerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        addSubview(labelView)
+        labelView.translatesAutoresizingMaskIntoConstraints = false
+        labelView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        labelView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        labelView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.16).isActive = true
+        labelView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: headerView.rightAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: labelView.rightAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
@@ -60,8 +60,10 @@ extension CollectionView {
 extension CollectionView {
     
     func initHeaderView() {
-        headerView.dayView.text = "Mon"
-        headerView.dateView.text = "12"
+        labelView.upperLabel.text = "Mon"
+        labelView.upperLabel.textAlignment = .center
+        labelView.lowerLabel.text = "12"
+        labelView.lowerLabel.textAlignment = .center
     }
 }
 
@@ -75,7 +77,11 @@ extension CollectionView {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundView = LabelView()
+        let cellView = LabelView()
+        cellView.color = .orange
+        cellView.upperLabel.text = "Math Hw"
+        cellView.lowerLabel.text = "Date"
+        cell.backgroundView = cellView
         cell.selectedBackgroundView = cell.contentView
         cell.layer.borderWidth = 1
         cell.backgroundColor = .white

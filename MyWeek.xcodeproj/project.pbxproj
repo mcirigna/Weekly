@@ -12,7 +12,6 @@
 		2B3E17D821960C8D00149216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B3E17D721960C8D00149216 /* Assets.xcassets */; };
 		2B3E17E82196153400149216 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3E17E72196153400149216 /* CollectionView.swift */; };
 		2B3E17EA2196326D00149216 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3E17E92196326D00149216 /* LabelView.swift */; };
-		2B3E17EC2196523A00149216 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3E17EB2196523A00149216 /* HeaderView.swift */; };
 		2B9E791A219B3B2F00CEC2AC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E7919219B3B2F00CEC2AC /* Model.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +23,6 @@
 		2B3E17DC21960C8D00149216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B3E17E72196153400149216 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		2B3E17E92196326D00149216 /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
-		2B3E17EB2196523A00149216 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		2B9E7919219B3B2F00CEC2AC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				2B3E17E72196153400149216 /* CollectionView.swift */,
-				2B3E17EB2196523A00149216 /* HeaderView.swift */,
 				2B3E17E92196326D00149216 /* LabelView.swift */,
 			);
 			path = View;
@@ -167,7 +164,6 @@
 				2B3E17E82196153400149216 /* CollectionView.swift in Sources */,
 				2B3E17EA2196326D00149216 /* LabelView.swift in Sources */,
 				2B9E791A219B3B2F00CEC2AC /* Model.swift in Sources */,
-				2B3E17EC2196523A00149216 /* HeaderView.swift in Sources */,
 				2B3E17D121960C8B00149216 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

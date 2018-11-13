@@ -10,8 +10,8 @@ import UIKit
 
 class LabelView: UIView {
     
-    private let colorBar = UIView()
-    var color: UIColor = .orange {
+    let colorBar = UIView()
+    var color: UIColor? {
         didSet {
             colorBar.backgroundColor = color
         }
@@ -64,8 +64,7 @@ extension LabelView {
 extension LabelView {
     
     func initColorBar() {
-        colorBar.backgroundColor = .orange
-        colorBar.layer.borderWidth = 0.5
+        
     }
 }
 
