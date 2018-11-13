@@ -10,7 +10,7 @@ import UIKit
 
 class LabelView: UIView {
     
-    let colorBar = UIView()
+    private let colorBar = UIView()
     var color: UIColor? {
         didSet {
             colorBar.backgroundColor = color
@@ -21,8 +21,8 @@ class LabelView: UIView {
     
     let lowerLabel = UILabel()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
         initView()
     }
     
@@ -72,13 +72,12 @@ extension LabelView {
     
     func initUpperLabel() {
         upperLabel.textAlignment = .center
-        upperLabel.text = "Math Hw"
     }
 }
 
 extension LabelView {
     
     func initLowerLabel() {
-        
+        lowerLabel.textAlignment = .center
     }
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Marvin Cirignano. All rights reserved.
 //
 
+// TODO: Bug when scrolling through row
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -58,7 +59,6 @@ extension MainViewController {
 extension MainViewController {
     
     func initTopBarView() {
-        
         topBarView.backgroundColor = .white
     }
 }
@@ -66,23 +66,26 @@ extension MainViewController {
 extension MainViewController {
     
     func initTableView() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        self.tableView.tableFooterView = UIView(frame: .zero)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.allowsSelection = false
+        tableView.tableFooterView = UIView(frame: .zero)
         let separatorInset: CGFloat = 10
         tableView.separatorInset = UIEdgeInsets(top: 0, left: separatorInset, bottom: 0, right: separatorInset)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId)!
-        
+        let weekDate = model.week[indexPath.item]
+        let day: Int = weekDate.day
+        let events = model.getEventsFromDay(day: day)
         let dayView = CollectionView()
+        dayView.loadCells(cells: model.getLabelViewsFromEvents(events: events))
+        dayView.leadCell.upperLabel.text = weekDate.weekdayAsString()
+        dayView.leadCell.lowerLabel.text = String(weekDate.day)
         
-//        dayView.day = model.getDay(index: indexPath.item)
-//        dayView.date = model.getDate(index: indexPath.item)
         cell.backgroundView = dayView
-        
         cell.selectedBackgroundView = cell.contentView
         return cell
     }
@@ -100,7 +103,6 @@ extension MainViewController {
 extension MainViewController {
     
     func initBottomBarView() {
-        
         bottomBarView.backgroundColor = .white
     }
 }
