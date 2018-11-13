@@ -10,23 +10,16 @@ import UIKit
 
 class EventCell: UICollectionViewCell {
     
-    let topBarView = UIView()
-    
-    var title: String? {
+    private let colorBar = UIView()
+    var color: UIColor = .orange {
         didSet {
-            titleView.text = title
+            colorBar.backgroundColor = color
         }
     }
-    let titleView = UILabel()
     
-    var date: Date? {
-        didSet {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MM-dd"
-            dateView.text = formatter.string(from: date!)
-        }
-    }
-    let dateView = UILabel()
+    let upperLabel = UILabel()
+    
+    let lowerLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,52 +34,52 @@ class EventCell: UICollectionViewCell {
 extension EventCell {
     
     func initView() {
-        initTopBarView()
-        initTitleView()
-        initDateView()
+        initColorBar()
+        initUpperLabel()
+        initLowerLabel()
         arrangeView()
     }
     
     func arrangeView() {
-        addSubview(topBarView)
-        topBarView.translatesAutoresizingMaskIntoConstraints = false
-        topBarView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        topBarView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        topBarView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1).isActive = true
+        addSubview(colorBar)
+        colorBar.translatesAutoresizingMaskIntoConstraints = false
+        colorBar.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        colorBar.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        colorBar.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1).isActive = true
         
-        addSubview(titleView)
-        titleView.translatesAutoresizingMaskIntoConstraints = false
-        titleView.topAnchor.constraint(equalTo: topBarView.bottomAnchor).isActive = true
-        titleView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        titleView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.6).isActive = true
+        addSubview(upperLabel)
+        upperLabel.translatesAutoresizingMaskIntoConstraints = false
+        upperLabel.topAnchor.constraint(equalTo: colorBar.bottomAnchor).isActive = true
+        upperLabel.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        upperLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.6).isActive = true
         
-        addSubview(dateView)
-        dateView.translatesAutoresizingMaskIntoConstraints = false
-        dateView.topAnchor.constraint(equalTo: titleView.bottomAnchor).isActive = true
-        dateView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        dateView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        addSubview(lowerLabel)
+        lowerLabel.translatesAutoresizingMaskIntoConstraints = false
+        lowerLabel.topAnchor.constraint(equalTo: upperLabel.bottomAnchor).isActive = true
+        lowerLabel.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        lowerLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
 }
 
 extension EventCell {
     
-    func initTopBarView() {
-        topBarView.backgroundColor = .orange
-        topBarView.layer.borderWidth = 0.5
+    func initColorBar() {
+        colorBar.backgroundColor = .orange
+        colorBar.layer.borderWidth = 0.5
     }
 }
 
 extension EventCell {
     
-    func initTitleView() {
-        titleView.textAlignment = .center
-        titleView.text = "Math Hw"
+    func initUpperLabel() {
+        upperLabel.textAlignment = .center
+        upperLabel.text = "Math Hw"
     }
 }
 
 extension EventCell {
     
-    func initDateView() {
+    func initLowerLabel() {
         
     }
 }
