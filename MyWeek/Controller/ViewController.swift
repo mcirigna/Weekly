@@ -79,8 +79,8 @@ extension MainViewController {
         
         let dayView = CollectionView()
         
-        dayView.day = model.getDay(index: indexPath.item)
-        dayView.date = model.getDate(index: indexPath.item)
+//        dayView.day = model.getDay(index: indexPath.item)
+//        dayView.date = model.getDate(index: indexPath.item)
         cell.backgroundView = dayView
         
         cell.selectedBackgroundView = cell.contentView

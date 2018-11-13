@@ -10,20 +10,8 @@ import UIKit
 
 class HeaderView: UIView {
     
-    var day: String? {
-        didSet {
-            dayView.text = day
-        }
-    }
     let dayView = UILabel()
     
-    var date: Date? {
-        didSet {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd"
-            dateView.text = formatter.string(from: date!)
-        }
-    }
     let dateView = UILabel()
     
     override init(frame: CGRect) {

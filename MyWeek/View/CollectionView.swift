@@ -10,19 +10,9 @@ import UIKit
 
 class CollectionView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var day: String? {
-        didSet {
-            headerView.day = day
-        }
-    }
-    var date: Date? {
-        didSet {
-            headerView.date = date
-        }
-    }
     let headerView = HeaderView()
     
-    private let eventCellId = "eventCell"
+    private let cellId = "cellId"
     let collectionView: UICollectionView
     
     override init(frame: CGRect) {
@@ -70,10 +60,8 @@ extension CollectionView {
 extension CollectionView {
     
     func initHeaderView() {
-        day = "Mon"
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd"
-        date = formatter.date(from: "24")
+        headerView.dayView.text = "Mon"
+        headerView.dateView.text = "12"
     }
 }
 
@@ -82,12 +70,13 @@ extension CollectionView {
     func initCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(EventCell.self, forCellWithReuseIdentifier: eventCellId)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: eventCellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        cell.backgroundView = LabelView()
+        cell.selectedBackgroundView = cell.contentView
         cell.layer.borderWidth = 1
         cell.backgroundColor = .white
         return cell

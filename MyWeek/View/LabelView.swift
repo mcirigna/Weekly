@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventCell: UICollectionViewCell {
+class LabelView: UIView {
     
     private let colorBar = UIView()
     var color: UIColor = .orange {
@@ -31,7 +31,7 @@ class EventCell: UICollectionViewCell {
     }
 }
 
-extension EventCell {
+extension LabelView {
     
     func initView() {
         initColorBar()
@@ -61,7 +61,7 @@ extension EventCell {
     }
 }
 
-extension EventCell {
+extension LabelView {
     
     func initColorBar() {
         colorBar.backgroundColor = .orange
@@ -69,7 +69,7 @@ extension EventCell {
     }
 }
 
-extension EventCell {
+extension LabelView {
     
     func initUpperLabel() {
         upperLabel.textAlignment = .center
@@ -77,7 +77,7 @@ extension EventCell {
     }
 }
 
-extension EventCell {
+extension LabelView {
     
     func initLowerLabel() {
         
