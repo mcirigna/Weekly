@@ -10,13 +10,6 @@ import Foundation
 
 class Model {
     
-    struct Event {
-        var id: Int
-        var title: String
-        var doDay: Weekdate
-        var dueDay: Weekdate
-    }
-    
     enum Weekday {
         case Monday
         case Tuesday
@@ -44,24 +37,24 @@ class Model {
         }
     }
     
-    var week: [Weekdate] = []
+    struct Event {
+        var id: Int
+        var title: String
+        var doDay: Int
+        var dueDay: Int
+    }
+    
+    private var week: [Weekdate] = []
     
     private var events: [Event] = []
     
     init() {
         getEvents()
-        getWeekDates()
+        getWeekdates()
     }
 }
 
 extension Model {
-    
-    private func getEvents() {
-        for _ in 0...7 {
-            let event = Event.init(id: 0, title: "Homework", doDay: Weekdate.init(day: 13, weekday: .Tuesday), dueDay: Weekdate.init(day: 4, weekday: .Saturday))
-            events.append(event)
-        }
-    }
     
     func addEvent(event: Event) {
         events.append(event)
@@ -69,29 +62,47 @@ extension Model {
         // reload?
     }
     
-    func getEventsFromDay(day: Int) -> [Event] {
+    func deleteEvent(id: Int) {
+        
+    }
+    
+    func replaceEvent(with id: Int, with replacement: Event) {
+        
+    }
+}
+
+extension Model {
+    
+    private func getEvents() {
+        for _ in 0...7 {
+            let event = Event.init(id: 0, title: "Homework", doDay: 16, dueDay: 18)
+            events.append(event)
+        }
+    }
+    
+    private func getEventsFromDay(day: Int) -> [Event] {
         var events: [Event] = []
         for event in self.events {
-            if (event.doDay.day == day) {
+            if (event.doDay == day) {
                 events.append(event)
             }
         }
         return events
     }
     
-    func getLabelViewsFromEvents(events: [Event]) -> [LabelView] {
+    private func getLabelViewsFromEvents(events: [Event]) -> [LabelView] {
         var labelViews: [LabelView] = []
         for event in events {
             let view = LabelView()
             view.upperLabel.text = event.title
-            view.lowerLabel.text = event.dueDay.weekdayAsString()
+            view.lowerLabel.text = String(event.dueDay)
             view.color = .orange
             labelViews.append(view)
         }
         return labelViews
     }
     
-    private func getWeekDates() {
+    private func getWeekdates() {
         // order todays date as 3rd Row!
         var date = Date()
         for _ in 0...6 {
