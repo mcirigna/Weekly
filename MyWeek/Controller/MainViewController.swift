@@ -13,6 +13,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let model = Model()
     
+
+    
     let topBarView = UIView()
     
     let cellId = "tableViewCell"
@@ -20,8 +22,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let bottomBarView = UIView()
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        
         initView()
     }
 }
@@ -65,7 +69,8 @@ extension MainViewController {
 
 extension MainViewController {
     
-    func initTableView() {
+    func initTableView()
+    {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
@@ -75,7 +80,8 @@ extension MainViewController {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: separatorInset, bottom: 0, right: separatorInset)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId)!
         let weekDate = model.week[indexPath.item]
         let day: Int = weekDate.day
@@ -90,19 +96,23 @@ extension MainViewController {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         return 7
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
         return (tableView.frame.height / 7)
     }
     
 }
 
-extension MainViewController {
+extension MainViewController
+{
     
-    func initBottomBarView() {
+    func initBottomBarView()
+    {
         bottomBarView.backgroundColor = .white
     }
 }
